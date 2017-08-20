@@ -4,7 +4,10 @@ using System.Text;
 
 namespace Example.Services.Tests
 {
-    public class Properties
+    /// <summary>
+    /// Helper methods for returning string representations of the properties of objects.
+    /// </summary>
+    public static class Properties
     {
         /// <summary>
         /// Recursively gets all of the properties and their values for all of the itemsin the list.
