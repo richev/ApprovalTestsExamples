@@ -6,9 +6,9 @@ Approval Tests' [`WinMergeReporter`](http://blog.approvaltests.com/2011/12/using
 to launch WinMerge to show the results of any failing tests. This gives a super productive way (on a developer's machine) to understand what
 has broken a test.
 
-String representations of objects being tested are created using a [`Stringify`](https://github.com/richev/ApprovalTestsExamples/blob/master/ApprovalTests.Tests/Stringify.cs)
-class that recursively loops over their properties
-([example](https://github.com/richev/ApprovalTestsExamples/blob/master/ApprovalTests.Tests/UserServiceTests.GetUsers_returns_expected_users.approved.txt)).
+[String representations](https://github.com/richev/ApprovalTestsExamples/blob/master/ApprovalTests.Tests/UserServiceTests.GetUsers_returns_expected_users.approved.txt)
+of objects being tested are created using a [`Stringify`](https://github.com/richev/ApprovalTestsExamples/blob/master/ApprovalTests.Tests/Stringify.cs)
+class that recursively loops over their properties.
 
 ## Tips
 By default, *approved* files exist in the same folder as their corresponding test. If added to the project,
