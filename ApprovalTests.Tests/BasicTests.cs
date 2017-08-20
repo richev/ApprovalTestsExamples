@@ -19,11 +19,27 @@ namespace Example.Services.Tests
         }
 
         [Test]
+        public void NullObjectTest()
+        {
+            NameModel name = null;
+
+            Approvals.Verify(Stringify.Item(name));
+        }
+
+        [Test]
+        public void EmptyArrayTest()
+        {
+            var array = new int[0];
+
+            Approvals.Verify(Stringify.Items(array));
+        }
+
+        [Test]
         public void ArrayTest()
         {
-            var list = new [] { 1, 2, 4, 10, 42 };
+            var array = new [] { 1, 2, 4, 10, 42 };
 
-            Approvals.Verify(Stringify.Items(list));
+            Approvals.Verify(Stringify.Items(array));
         }
 
         [Test]
@@ -34,6 +50,14 @@ namespace Example.Services.Tests
                 { "Foo", 11 },
                 { "Bar", 42 }
             };
+
+            Approvals.Verify(Stringify.Items(dictionary));
+        }
+
+        [Test]
+        public void EmptyDictionaryTest()
+        {
+            var dictionary = new Dictionary<string, int>();
 
             Approvals.Verify(Stringify.Items(dictionary));
         }

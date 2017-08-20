@@ -6,18 +6,31 @@ using System.Text;
 namespace Example.Services.Tests
 {
     /// <summary>
-    /// Helper methods for returning string representations of the properties of objects.
+    /// Methods for returning string representations of lists and objects, recursively looping
+    /// over their properties.
     /// </summary>
     public static class Stringify
     {
         /// <summary>
-        /// Recursively gets all of the properties and their values for all of the items.
+        /// Gets a string that represents the list of items.
         /// </summary>
         public static string Items(IEnumerable items)
         {
             var sb = new StringBuilder();
 
             Items(sb, string.Empty, items);
+
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Gets a string that represents the item.
+        /// </summary>
+        public static string Item(object item)
+        {
+            var sb = new StringBuilder();
+
+            Item(sb, string.Empty, item);
 
             return sb.ToString();
         }
@@ -30,12 +43,7 @@ namespace Example.Services.Tests
                 return;
             }
 
-            var list = new ArrayList();
-
-            foreach (var item in items)
-            {
-                list.Add(item);
-            }
+            var list = EnumerableToList(items);
 
             sb.AppendLine(string.Format("{0}Count = {1}", DottedPrefix(prefix), list.Count));
 
@@ -62,21 +70,13 @@ namespace Example.Services.Tests
             }
         }
 
-        /// <summary>
-        /// Recursively gets all of the properties and their values for all of the item.
-        /// </summary>
-        public static string Item(object item)
-        {
-            var sb = new StringBuilder();
-
-            Item(sb, string.Empty, item);
-
-            return sb.ToString();
-        }
-
         private static void Item(StringBuilder sb, string prefix, object item)
         {
-            if (IsValueOrString(item.GetType()))
+            if (item == null)
+            {
+                sb.AppendLine(ValueToString(item));
+            }
+            else if (IsValueOrString(item.GetType()))
             {
                 sb.AppendLine(string.Format("{0} = {1}", prefix, ValueToString(item)));
             }
@@ -98,6 +98,21 @@ namespace Example.Services.Tests
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// So that we can report the count of items in our tests.
+        /// </summary>
+        private static ArrayList EnumerableToList(IEnumerable items)
+        {
+            var list = new ArrayList();
+
+            foreach (var item in items)
+            {
+                list.Add(item);
+            }
+
+            return list;
         }
 
         private static bool IsValueOrString(Type type)

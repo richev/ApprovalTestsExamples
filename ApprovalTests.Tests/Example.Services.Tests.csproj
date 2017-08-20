@@ -78,6 +78,15 @@
     <Content Include="BasicTests.ComplexDictionaryTest.approved.txt">
       <DependentUpon>BasicTests.cs</DependentUpon>
     </Content>
+    <Content Include="BasicTests.EmptyArrayTest.approved.txt">
+      <DependentUpon>BasicTests.cs</DependentUpon>
+    </Content>
+    <Content Include="BasicTests.EmptyDictionaryTest.approved.txt">
+      <DependentUpon>BasicTests.cs</DependentUpon>
+    </Content>
+    <Content Include="BasicTests.NullObjectTest.approved.txt">
+      <DependentUpon>BasicTests.cs</DependentUpon>
+    </Content>
     <Content Include="BasicTests.ObjectTest.approved.txt">
       <DependentUpon>BasicTests.cs</DependentUpon>
     </Content>
