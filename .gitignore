@@ -1,0 +1,10 @@
+*.user
+*.suo
+*.pdb
+*.ncrunch*
+*.bak
+obj
+bin
+csx
+_NCrunch*
+packages/*
