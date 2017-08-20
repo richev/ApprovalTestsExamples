@@ -19,7 +19,7 @@ namespace Example.Services.Tests
         }
 
         [Test]
-        public void ListTest()
+        public void ArrayTest()
         {
             var list = new [] { 1, 2, 4, 10, 42 };
 
