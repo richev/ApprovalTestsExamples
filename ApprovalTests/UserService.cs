@@ -35,7 +35,8 @@ namespace Example.Services
                         State = "NSW",
                         Postcode = "2094"
                     }
-                }
+                },
+                SomeCodes = new List<string>()
             },
             new UserModel
             {
@@ -44,7 +45,8 @@ namespace Example.Services
                 {
                     First = "Jill",
                     Last = "Blue"
-                }
+                },
+                SomeCodes = new List<string> { "01", "05", "11" }
             }
         };
 

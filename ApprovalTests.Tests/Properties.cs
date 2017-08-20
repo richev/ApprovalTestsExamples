@@ -25,7 +25,7 @@ namespace Example.Services.Tests
         {
             if (items == null)
             {
-                sb.AppendFormat("{0} = {1}", prefix, ValueToString(items));
+                sb.AppendLine(string.Format("{0} = {1}", prefix, ValueToString(items)));
                 return;
             }
 
@@ -36,16 +36,24 @@ namespace Example.Services.Tests
                 list.Add(item);
             }
 
-            sb.AppendFormat(
-                "{0}{1}Count = {2}{3}",
+            sb.AppendLine(string.Format(
+                "{0}{1}Count = {2}",
                 prefix,
                 string.IsNullOrEmpty(prefix) ? string.Empty : ".",
-                list.Count,
-                Environment.NewLine);
+                list.Count));
 
             for (var i = 0; i < list.Count; i++)
             {
-                OfItem(sb, string.Format("{0}[{1}]", prefix, i), list[i]);
+                var item = list[i];
+
+                if (IsValueOrString(item.GetType()))
+                {
+                    sb.AppendLine(string.Format("{0}[{1}] = {2}", prefix, i, ValueToString(item)));
+                }
+                else
+                {
+                    OfItem(sb, string.Format("{0}[{1}]", prefix, i), item);
+                }
             }
         }
 
@@ -53,9 +61,9 @@ namespace Example.Services.Tests
         {
             foreach (var prop in item.GetType().GetProperties())
             {
-                if (prop.PropertyType.IsValueType || prop.PropertyType == typeof(string))
+                if (IsValueOrString(prop.PropertyType))
                 {
-                    sb.AppendFormat("{0}.{1} = {2}{3}", prefix, prop.Name, ValueToString(prop.GetValue(item)), Environment.NewLine);
+                    sb.AppendLine(string.Format("{0}.{1} = {2}", prefix, prop.Name, ValueToString(prop.GetValue(item))));
                 }
                 else if (typeof(IEnumerable).IsAssignableFrom(prop.PropertyType))
                 {
@@ -66,6 +74,11 @@ namespace Example.Services.Tests
                     OfItem(sb, string.Format("{0}.{1}", prefix, prop.Name), prop.GetValue(item));
                 }
             }
+        }
+
+        private static bool IsValueOrString(Type type)
+        {
+            return type.IsValueType || type == typeof(string);
         }
 
         private static string ValueToString(object value)

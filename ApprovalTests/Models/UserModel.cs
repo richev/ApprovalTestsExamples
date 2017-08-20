@@ -12,5 +12,7 @@ namespace Example.Services.Models
         public NameModel Name { get; set; }
 
         public IEnumerable<AddressModel> Addresses { get; set; }
+
+        public IEnumerable<string> SomeCodes { get; set; }
     }
 }

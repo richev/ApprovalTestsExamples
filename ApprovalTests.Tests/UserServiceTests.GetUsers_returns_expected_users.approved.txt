@@ -14,8 +14,13 @@
 [0].Addresses[1].City = 'Fairlight'
 [0].Addresses[1].State = 'NSW'
 [0].Addresses[1].Postcode = '2094'
+[0].SomeCodes.Count = 0
 [1].Key = {cda51980-0b41-43db-9135-bf44471bd07f}
 [1].Age = <null>
 [1].Name.First = 'Jill'
 [1].Name.Last = 'Blue'
 [1].Addresses = <null>
+[1].SomeCodes.Count = 3
+[1].SomeCodes[0] = '01'
+[1].SomeCodes[1] = '05'
+[1].SomeCodes[2] = '11'
