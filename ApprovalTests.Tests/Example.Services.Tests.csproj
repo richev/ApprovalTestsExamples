@@ -56,7 +56,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties.cs" />
+    <Compile Include="BasicTests.cs" />
+    <Compile Include="Stringify.cs" />
     <Compile Include="UserServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -70,6 +71,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BasicTests.ComplexDictionaryTest.approved.txt" />
+    <Content Include="BasicTests.ObjectTest.approved.txt" />
+    <Content Include="BasicTests.SimpleDictionaryTest.approved.txt" />
+    <Content Include="BasicTests.ListTest.approved.txt" />
     <Content Include="UserServiceTests.GetUsers_returns_expected_users.approved.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

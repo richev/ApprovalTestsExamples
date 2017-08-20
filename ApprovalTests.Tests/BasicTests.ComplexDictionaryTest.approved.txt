@@ -1,0 +1,7 @@
+﻿Count = 2
+[0].Key = 'Foo'
+[0].Value.First = 'Jack'
+[0].Value.Last = 'Black'
+[1].Key = 'Bar'
+[1].Value.First = 'Jill'
+[1].Value.Last = 'Blue'

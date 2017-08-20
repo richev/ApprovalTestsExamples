@@ -21,7 +21,7 @@ namespace Example.Services.Tests
         {
             var users = _userService.GetUsers();
 
-            Approvals.Verify(Properties.OfList(users));
+            Approvals.Verify(Stringify.Items(users));
         }
     }
 }

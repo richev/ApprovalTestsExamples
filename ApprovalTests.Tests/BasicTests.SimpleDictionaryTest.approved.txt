@@ -1,0 +1,5 @@
+﻿Count = 2
+[0].Key = 'Foo'
+[0].Value = 11
+[1].Key = 'Bar'
+[1].Value = 42
