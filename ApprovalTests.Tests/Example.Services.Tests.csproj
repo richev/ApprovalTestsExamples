@@ -72,11 +72,21 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BasicTests.ComplexDictionaryTest.approved.txt" />
-    <Content Include="BasicTests.ObjectTest.approved.txt" />
-    <Content Include="BasicTests.SimpleDictionaryTest.approved.txt" />
-    <Content Include="BasicTests.ArrayTest.approved.txt" />
-    <Content Include="UserServiceTests.GetUsers_returns_expected_users.approved.txt" />
+    <Content Include="BasicTests.ArrayTest.approved.txt">
+      <DependentUpon>BasicTests.cs</DependentUpon>
+    </Content>
+    <Content Include="BasicTests.ComplexDictionaryTest.approved.txt">
+      <DependentUpon>BasicTests.cs</DependentUpon>
+    </Content>
+    <Content Include="BasicTests.ObjectTest.approved.txt">
+      <DependentUpon>BasicTests.cs</DependentUpon>
+    </Content>
+    <Content Include="BasicTests.SimpleDictionaryTest.approved.txt">
+      <DependentUpon>BasicTests.cs</DependentUpon>
+    </Content>
+    <Content Include="UserServiceTests.GetUsers_returns_expected_users.approved.txt">
+      <DependentUpon>UserServiceTests.cs</DependentUpon>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
