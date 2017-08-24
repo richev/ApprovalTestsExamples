@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace Example.Services.Tests
@@ -53,8 +54,8 @@ namespace Example.Services.Tests
 
                 if (item.GetType().IsGenericType && item.GetType().GetGenericTypeDefinition() == typeof(KeyValuePair<,>))
                 {
-                    var key = item.GetType().GetProperty("Key").GetValue(item);
-                    var value = item.GetType().GetProperty("Value").GetValue(item);
+                    var key = GetPropertyValue(item, "Key");
+                    var value = GetPropertyValue(item, "Value");
 
                     Item(sb, string.Format("{0}[{1}].Key", prefix, i), key);
                     Item(sb, string.Format("{0}[{1}].Value", prefix, i), value);
@@ -82,7 +83,9 @@ namespace Example.Services.Tests
             }
             else
             {
-                foreach (var prop in item.GetType().GetProperties())
+                foreach (var prop in item.GetType().GetProperties(BindingFlags.Public |
+                                                                  BindingFlags.NonPublic |
+                                                                  BindingFlags.Instance))
                 {
                     if (IsValueOrString(prop.PropertyType))
                     {
@@ -103,7 +106,7 @@ namespace Example.Services.Tests
         /// <summary>
         /// So that we can report the count of items in our tests.
         /// </summary>
-        private static ArrayList EnumerableToList(IEnumerable items)
+        private static IList EnumerableToList(IEnumerable items)
         {
             var list = new ArrayList();
 
@@ -113,6 +116,20 @@ namespace Example.Services.Tests
             }
 
             return list;
+        }
+
+        private static object GetPropertyValue(object item, string propertyName)
+        {
+            var property = item.GetType().GetProperty(propertyName);
+
+            if (property == null)
+            {
+                throw new Exception(string.Format("Could not find a property named '{0}' on object of type {1}.", propertyName, item.GetType().FullName));
+            }
+
+            var value = property.GetValue(item);
+
+            return value;
         }
 
         private static bool IsValueOrString(Type type)

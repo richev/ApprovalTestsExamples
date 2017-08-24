@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasicTests.cs" />
+    <Compile Include="ObjectTests.cs" />
     <Compile Include="Stringify.cs" />
     <Compile Include="UserServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,7 +85,7 @@
     <Content Include="BasicTests.EmptyDictionaryTest.approved.txt">
       <DependentUpon>BasicTests.cs</DependentUpon>
     </Content>
-    <Content Include="BasicTests.NullObjectTest.approved.txt">
+    <Content Include="BasicTests.NullTest.approved.txt">
       <DependentUpon>BasicTests.cs</DependentUpon>
     </Content>
     <Content Include="BasicTests.ObjectTest.approved.txt">
@@ -92,6 +93,12 @@
     </Content>
     <Content Include="BasicTests.SimpleDictionaryTest.approved.txt">
       <DependentUpon>BasicTests.cs</DependentUpon>
+    </Content>
+    <Content Include="ObjectTests.InheritedObjectTest.approved.txt">
+      <DependentUpon>ObjectTests.cs</DependentUpon>
+    </Content>
+    <Content Include="ObjectTests.ObjectTest.approved.txt">
+      <DependentUpon>ObjectTests.cs</DependentUpon>
     </Content>
     <Content Include="UserServiceTests.GetUsers_returns_expected_users.approved.txt">
       <DependentUpon>UserServiceTests.cs</DependentUpon>

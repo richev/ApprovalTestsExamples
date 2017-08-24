@@ -1,0 +1,2 @@
+﻿InheritedClassProperty = 'Bar'
+BaseClassProperty = 'Foo'

@@ -11,17 +11,9 @@ namespace Example.Services.Tests
     public class BasicTests
     {
         [Test]
-        public void ObjectTest()
+        public void NullTest()
         {
-            var name = new NameModel { First = "Jack", Last = "Black" };
-
-            Approvals.Verify(Stringify.Item(name));
-        }
-
-        [Test]
-        public void NullObjectTest()
-        {
-            NameModel name = null;
+            object name = null;
 
             Approvals.Verify(Stringify.Item(name));
         }
