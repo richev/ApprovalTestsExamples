@@ -8,3 +8,4 @@ bin
 csx
 _NCrunch*
 packages/*
+*.received.*
