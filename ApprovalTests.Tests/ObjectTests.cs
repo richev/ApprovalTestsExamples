@@ -1,6 +1,5 @@
 ﻿using ApprovalTests;
 using ApprovalTests.Reporters;
-using Example.Services.Models;
 using NUnit.Framework;
 
 namespace Example.Services.Tests
