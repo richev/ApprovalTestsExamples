@@ -10,6 +10,11 @@ namespace Example.Services.Tests
     {
         private class Base
         {
+            /// <summary>
+            /// Should not be in Stringified string.
+            /// </summary>
+            public static string StaticProperty { get; set; }
+
             public string BaseClassProperty { get; set; }
         }
 
