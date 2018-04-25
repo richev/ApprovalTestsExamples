@@ -40,13 +40,13 @@ namespace Example.Services.Tests
         {
             if (items == null)
             {
-                sb.AppendLine(string.Format("{0} = {1}", prefix, ValueToString(items)));
+                sb.AppendLine($"{prefix} = {ValueToString(items)}");
                 return;
             }
 
             var list = EnumerableToList(items);
 
-            sb.AppendLine(string.Format("{0}Count = {1}", DottedPrefix(prefix), list.Count));
+            sb.AppendLine($"{DottedPrefix(prefix)}Count = {list.Count}");
 
             for (var i = 0; i < list.Count; i++)
             {
@@ -57,16 +57,16 @@ namespace Example.Services.Tests
                     var key = GetPropertyValue(item, "Key");
                     var value = GetPropertyValue(item, "Value");
 
-                    Item(sb, string.Format("{0}[{1}].Key", prefix, i), key);
-                    Item(sb, string.Format("{0}[{1}].Value", prefix, i), value);
+                    Item(sb, $"{prefix}[{i}].Key", key);
+                    Item(sb, $"{prefix}[{i}].Value", value);
                 }
                 else if (IsValueOrString(item.GetType()))
                 {
-                    sb.AppendLine(string.Format("{0}[{1}] = {2}", prefix, i, ValueToString(item)));
+                    sb.AppendLine($"{prefix}[{i}] = {ValueToString(item)}");
                 }
                 else
                 {
-                    Item(sb, string.Format("{0}[{1}]", prefix, i), item);
+                    Item(sb, $"{prefix}[{i}]", item);
                 }
             }
         }
@@ -79,7 +79,7 @@ namespace Example.Services.Tests
             }
             else if (IsValueOrString(item.GetType()))
             {
-                sb.AppendLine(string.Format("{0} = {1}", prefix, ValueToString(item)));
+                sb.AppendLine($"{prefix} = {ValueToString(item)}");
             }
             else
             {
@@ -89,15 +89,15 @@ namespace Example.Services.Tests
                 {
                     if (IsValueOrString(prop.PropertyType))
                     {
-                        sb.AppendLine(string.Format("{0}{1} = {2}", DottedPrefix(prefix), prop.Name, ValueToString(prop.GetValue(item))));
+                        sb.AppendLine($"{DottedPrefix(prefix)}{prop.Name} = {ValueToString(prop.GetValue(item))}");
                     }
                     else if (typeof(IEnumerable).IsAssignableFrom(prop.PropertyType))
                     {
-                        Items(sb, string.Format("{0}{1}", DottedPrefix(prefix), prop.Name), prop.GetValue(item) as IList);
+                        Items(sb, $"{DottedPrefix(prefix)}{prop.Name}", prop.GetValue(item) as IList);
                     }
                     else
                     {
-                        Item(sb, string.Format("{0}{1}", DottedPrefix(prefix), prop.Name), prop.GetValue(item));
+                        Item(sb, $"{DottedPrefix(prefix)}{prop.Name}", prop.GetValue(item));
                     }
                 }
             }
@@ -124,7 +124,8 @@ namespace Example.Services.Tests
 
             if (property == null)
             {
-                throw new Exception(string.Format("Could not find a property named '{0}' on object of type {1}.", propertyName, item.GetType().FullName));
+                throw new Exception(
+                    $"Could not find a property named '{propertyName}' on object of type {item.GetType().FullName}.");
             }
 
             var value = property.GetValue(item);
@@ -139,7 +140,7 @@ namespace Example.Services.Tests
 
         private static string DottedPrefix(string prefix)
         {
-            return string.IsNullOrEmpty(prefix) ? string.Empty : string.Format("{0}.", prefix);
+            return string.IsNullOrEmpty(prefix) ? string.Empty : $"{prefix}.";
         }
 
         private static string ValueToString(object value)
@@ -153,15 +154,15 @@ namespace Example.Services.Tests
 
             if (type == typeof(string))
             {
-                return string.Format("'{0}'", value);
+                return $"'{value}'";
             }
             if (type == typeof(Guid))
             {
-                return string.Format("{{{0}}}", value);
+                return $"{{{value}}}";
             }
             if (type.IsEnum)
             {
-                return string.Format("{0} ({1})", value, (int)value);
+                return $"{value} ({(int) value})";
             }
 
             return value.ToString();
