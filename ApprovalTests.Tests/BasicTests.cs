@@ -3,6 +3,7 @@ using ApprovalTests.Reporters;
 using Example.Services.Models;
 using NUnit.Framework;
 using System.Collections.Generic;
+using ApprovalTests.Reporters.ContinuousIntegration;
 
 namespace Example.Services.Tests
 {

@@ -1,5 +1,6 @@
 ﻿using ApprovalTests;
 using ApprovalTests.Reporters;
+using ApprovalTests.Reporters.ContinuousIntegration;
 using NUnit.Framework;
 
 namespace Example.Services.Tests
